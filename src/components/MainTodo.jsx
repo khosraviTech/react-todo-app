@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import todosSlice from "../redux/todosSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import TodoList from "./todoList";
+import TodoList from "./TodoList";
 
 export default function MainTodo() {
 
