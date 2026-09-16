@@ -13,7 +13,7 @@ export default function TodoList() {
           todos.map(
             (item,index)=>
               <li key={index}>
-                <TodoItem key={item.id} item={item}/>
+                <TodoItem key={item.id}  item={item}/>
               </li>
           )
           
