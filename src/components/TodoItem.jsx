@@ -3,13 +3,16 @@ import RemoveItem from "./RemoveItem";
 import { useState } from "react";
 import todosSlice from "../redux/todosSlice";
 
+
 export default function TodoItem({ item }) {
 
 
+  let dispatch = useDispatch();
+
   let [editing, setEditing] = useState(false);
   let [value, setValue] = useState(item);
-  let dispatch = useDispatch();
   let { edit } = todosSlice.actions;
+  let { remove } = todosSlice.actions;
 
 
   if (editing === false) {
@@ -36,10 +39,22 @@ export default function TodoItem({ item }) {
         >
           Edit
         </button>
+
+        {/* <RemoveItem item={item} /> */}
+        <button
+          onClick={() => dispatch(remove(item))}
+          className="
+        hover:bg-red-700 hover:border-red-700   cursor-pointer
+        w-9
         
-        <RemoveItem item={item} />
-        
-        
+        font-extrabold 
+        border-5 border-red-600 rounded-r-full
+         bg-red-600
+         text-white "
+        >
+          X
+        </button>
+
       </div>
 
     );
@@ -58,7 +73,7 @@ export default function TodoItem({ item }) {
         outline-0">
 
         <input
-        className="
+          className="
          pt-2 pb-2 w-full
          rounded-4xl
          border-2
@@ -66,20 +81,20 @@ export default function TodoItem({ item }) {
          outline-0
          
         "
-        type="text"
-        value={value.name}
-        onChange={(e) => setValue({ id: value.id, name: e.target.value })}
-        onKeyDown={(event) => {
-          if (event.key === "Enter") {
-            dispatch(edit(value));
-            setEditing(false)
-          }
-        }}
-      />
+          type="text"
+          value={value.name}
+          onChange={(e) => setValue({ id: value.id, name: e.target.value })}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              dispatch(edit(value));
+              setEditing(false)
+            }
+          }}
+        />
 
       </div>
 
-      
+
 
 
     )
